@@ -85,3 +85,12 @@ Rewriting validation function with Yup
 ---------------------------------------
 
 Yup can simplify the things.
+
+-----------------------------------------------
+Reducing boiler plate with formik super powers
+-----------------------------------------------
+
+We have 3 lines on each input field which is repeated, so remove that and replace one line with "getFieldProps" method
+    1. onBlur
+    2. OnChange
+    3. value
