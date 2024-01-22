@@ -110,3 +110,10 @@ Replacement steps
     2. Remove useFoemik code
     3. Wrap form tag with Formik component
     4. Pass the different props which we have passed in useFormik hook
+
+2. Form Component : 
+    
+Replacement steps
+    1. Import Form from formik
+    2. Replace form tage with Form component
+    3. Remove onSubmit event
