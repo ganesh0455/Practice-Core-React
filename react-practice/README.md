@@ -18,9 +18,27 @@ In this we are dealing with mainly 3 things
     3. Validation and error messages
 
 useFormik Hook: 
-    which is a function which takes an object as a parameter, and which returns different varieties of methods and properties.
+    which is a function which takes an object as a parameter, and which returns an object with different varieties of methods and properties.
 
-    This formik hook is use to manage abouve 3 points.
+    This formik hook is use to manage above 3 points.
         1. Managing the form state
         2. Handling form submission
         3. Validation and error messages
+
+----------------------
+Managing form state
+----------------------
+
+Step 1: We need to track the form fields, so when the value changes in field we need to track that, for this
+
+    1. The first property we pass in useFormik was "initialValues"
+    2. initialValues is an object which contains our form fields
+    3. Very important: the properties should match with "name" attribute of the corresponding form fields.
+
+Step 2:  We need to add the onchange and the value prop for each of the form field to ensure the form fields are in track with react and formik
+
+    1. Add onChange and value props to each field.
+    2. Now pass formik.handleChange on "onChange" method
+    3. Same as pass formik.values.name in "value" attribute
+    4. By doing that the formik will automatically starts the tracking of form field values
+
