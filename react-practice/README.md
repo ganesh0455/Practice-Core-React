@@ -78,3 +78,10 @@ Visited fields
 ----------------
 1. Here we have "onBlur" prop, like formik.handleBlur for onBlur event
 2. Now here "thouched" is an object which keeps track what are the visited field in an object with corresponding keys matching eith name attribute
+
+
+---------------------------------------
+Rewriting validation function with Yup
+---------------------------------------
+
+Yup can simplify the things.
