@@ -94,3 +94,19 @@ We have 3 lines on each input field which is repeated, so remove that and replac
     1. onBlur
     2. OnChange
     3. value
+
+--------------------
+Formik components
+--------------------
+    1. Formik
+    2. Form
+    3. Field
+    4. ErrorMessage
+
+1. Formik component : which is the replacement for useFormik hook
+
+Replacement steps
+    1. Import Formik instead og useFormik
+    2. Remove useFoemik code
+    3. Wrap form tag with Formik component
+    4. Pass the different props which we have passed in useFormik hook
