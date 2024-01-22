@@ -42,3 +42,9 @@ Step 2:  We need to add the onchange and the value prop for each of the form fie
     3. Same as pass formik.values.name in "value" attribute
     4. By doing that the formik will automatically starts the tracking of form field values
 
+--------------------------
+Handling form submission
+--------------------------
+
+Step 1: Specify the "onSubmit" prop in form tag, now pass the values as formik.handleSubmit
+Step 2: Now pass the 2 nd attribute i.e onSubmit next to initialValues, now this onSubmit automattically receives the latest formik state data as a parameter. When ever user click on submit button then this onSubmit metho will becallled automatically.
