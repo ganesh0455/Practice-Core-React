@@ -117,3 +117,10 @@ Replacement steps
     1. Import Form from formik
     2. Replace form tage with Form component
     3. Remove onSubmit event
+
+3. Field Component :
+
+Replacement steps
+    1. Import Field from formik
+    2. Replace input tag with Field component
+    3. get rid of getFieldProps function
