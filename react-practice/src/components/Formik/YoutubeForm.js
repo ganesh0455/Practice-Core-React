@@ -38,7 +38,7 @@ const YoutubeForm = () => {
         validate,
     });
     
-    console.log("error==", formik.errors);
+    console.log("visited fields==", formik.touched);
 
     return (
         <form onSubmit={formik.hanldeSubmit}>
@@ -49,9 +49,10 @@ const YoutubeForm = () => {
                     id="name"
                     name="name"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.name}
                 />
-                {formik.errors.name && <div className='error'>{formik.errors.name}</div>}
+                {formik.touched.name && formik.errors.name && <div className='error'>{formik.errors.name}</div>}
             </div>
             <div className='form-control'>
                 <label htmlFor='email'>Email</label>
@@ -60,9 +61,10 @@ const YoutubeForm = () => {
                     id="email"
                     name="email"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.email}
                 />
-                {formik.errors.email && <div className='error'>{formik.errors.email}</div>}
+                {formik.touched.email && formik.errors.email && <div className='error'>{formik.errors.email}</div>}
             </div>
             <div className='form-control'>
                 <label htmlFor='channel'>Channel</label>
@@ -71,9 +73,10 @@ const YoutubeForm = () => {
                     id="channel"
                     name="channel"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values.channel}
                 />
-                {formik.errors.channel && <div className='error'>{formik.errors.channel}</div>}
+                {formik.touched.channel && formik.errors.channel && <div className='error'>{formik.errors.channel}</div>}
             </div>
             <button type="submit">Submit</button>
         </form>
