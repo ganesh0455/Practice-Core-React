@@ -16,3 +16,11 @@ In this we are dealing with mainly 3 things
     1. Managing the form state
     2. Handling form submission
     3. Validation and error messages
+
+useFormik Hook: 
+    which is a function which takes an object as a parameter, and which returns different varieties of methods and properties.
+
+    This formik hook is use to manage abouve 3 points.
+        1. Managing the form state
+        2. Handling form submission
+        3. Validation and error messages
