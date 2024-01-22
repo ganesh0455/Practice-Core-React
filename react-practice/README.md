@@ -124,3 +124,11 @@ Replacement steps
     1. Import Field from formik
     2. Replace input tag with Field component
     3. get rid of getFieldProps function
+
+4. ErrorMessage Component :
+
+Replacement steps
+
+    1. Import ErrorMessage from formik
+    2. Remove error message rendering code on JSX and replace with ErrorMessage component
+    3. Pass name attribute with corresponding field name
