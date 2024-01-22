@@ -66,4 +66,8 @@ Let add Validation rules for the form
     5. Now valus of that key should indicationg the string indicating that what is the error message should be for that particular field.
 
 
- 
+--------------------------
+Dispalying error messages
+--------------------------
+
+As formik contains "values" object , it contains one more property i.e "errors"
