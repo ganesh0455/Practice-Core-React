@@ -48,3 +48,22 @@ Handling form submission
 
 Step 1: Specify the "onSubmit" prop in form tag, now pass the values as formik.handleSubmit
 Step 2: Now pass the 2 nd attribute i.e onSubmit next to initialValues, now this onSubmit automattically receives the latest formik state data as a parameter. When ever user click on submit button then this onSubmit metho will becallled automatically.
+
+-------------------------------
+Validation and error messages
+-------------------------------
+
+Let we have to build like
+    1. All are the required fields
+    2. Add valid email format validation
+
+Let add Validation rules for the form
+
+    1. Let defaine validation function
+    2. For connecting that validation function to formik we have to add 3rd property i.e "validate"
+    3. "validate" which receives the form state as a parameter and which returns a object let that is errors object.
+    4. Now the keys of that error object should be similar to that of name attribeutes of form fields.
+    5. Now valus of that key should indicationg the string indicating that what is the error message should be for that particular field.
+
+
+ 
