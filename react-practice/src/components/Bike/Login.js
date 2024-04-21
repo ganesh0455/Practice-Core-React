@@ -91,6 +91,7 @@ const Login = () => {
                 dispatch(addUser(data));
                 localStorage.setItem('userId', data.user_id);
                 navigate("/bikeList");
+                toast("Successfully logged in");
             }
 
         }

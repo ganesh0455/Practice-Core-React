@@ -1,13 +1,46 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Modal from './model';
 import { useDispatch } from "react-redux";
 import { toggleModel } from '../../utils/modelSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Enquiry = () => {
     const dispatch = useDispatch();
+    const mobileNumber = useRef();
+    const description = useRef();
 
-    const handleEnquirySubmit = (event) => {
+    const userId = JSON.parse(localStorage.getItem('userId'));
+
+    const handleEnquirySubmit = async(event) => {
         event.preventDefault();
+
+        const formData = {
+            mobile_number: mobileNumber.current.value,
+            description: description.current.value,
+            user: userId
+        }
+
+        let apiURL = "http://127.0.0.1:8000/inquiry/";
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+
+        try {
+            const response = await fetch(apiURL, options);
+
+            if(response.status === 201){
+                toast("Successfully stored enquiry details");
+            }
+
+        }
+        catch (err) {
+            toast("Oops! Cannot store enquiry details");
+        }
     }
 
     const handleEnquiryCancel = () => {
@@ -22,12 +55,14 @@ const Enquiry = () => {
                     className='enquiry-field'
                     type='number'
                     placeholder='Mobile number'
+                    ref={mobileNumber}
                 />
                 <textarea
                     rows={4}
                     className='enquiry-field'
                     type='text'
                     placeholder='Description'
+                    ref={description}
                 />
                 <div className='model-button-container'>
                     <button 
@@ -44,6 +79,7 @@ const Enquiry = () => {
                     </button>
                 </div>
             </form>
+            <ToastContainer />
         </Modal>
     )
 }
