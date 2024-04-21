@@ -1,4 +1,5 @@
-export const validateData = (email, passwords, ...rest) => {
+export const validateData = (email, password, ...rest) => {
+    console.log("rest==",...rest);
     // /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
     // Password rules
@@ -9,13 +10,16 @@ export const validateData = (email, passwords, ...rest) => {
     // Allow special characters.
     const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
-    const  isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,20}$/.test(passwords);
+    const  isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,20}$/.test(password);
 
-    const  isConfirmPasswordValid = rest.confirmPasswor === passwords;
+    const  isConfirmPasswordValid = rest[0].confirmPassword === password;
+
+    console.log(isConfirmPasswordValid);
 
     if(!isEmailValid) return "Please enter a valid email address.";
     if(!isPasswordValid) return "Please enter a valid password.";
-    if(!isConfirmPasswordValid) return "Password and Confirm password should be same.";
+    if(rest[0].isSignUpForm && !isConfirmPasswordValid) return "Password and Confirm password should be same.";
+    if(rest[0].isSignUpForm && !rest[0].userName) return "Please enter Username.";
 
     return null; // if email and password is valid then we are returning null.
 }

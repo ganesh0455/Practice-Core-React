@@ -26,7 +26,7 @@ const Router = () => {
             element: <BikeList />,
         },
         {
-            path:"/user",
+            path:"/user/:id",
             element: <UserDetails />,
         },
         {

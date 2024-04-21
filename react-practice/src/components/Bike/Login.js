@@ -1,18 +1,92 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { BIKE_IMAGE } from '../../constants';
 import { useNavigate } from "react-router-dom";
+import { validateData } from '../../utils/validate';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../../utils/userSlice';
 
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [isSignUpForm, setIsSignUpForm] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const email =  useRef(null);
+    const password = useRef(null);
+    const confirmPassword = useRef(null);
+    const userName = useRef(null);
+
 
     const handleChangeForm = () => {
         setIsSignUpForm(!isSignUpForm);
+        setErrorMessage(null);
     }
 
-    const handleAuthenticating = (event) => {
+    const handleAuthenticating = async(event) => {
         event.preventDefault();
-        navigate("/bikeList");
+
+        const formUserDetails = {
+            isSignUpForm: isSignUpForm,
+            email: email.current.value,
+            password: password.current.value,
+        }
+
+        if(isSignUpForm){
+            formUserDetails["userName"] = userName.current.value;
+            formUserDetails["confirmPassword"] = confirmPassword.current.value;
+        }
+
+        console.log("formUserDetails", formUserDetails);
+
+        let haveErrorMessage = validateData(formUserDetails.email, formUserDetails.password, formUserDetails);
+
+        console.log("errorMessage", haveErrorMessage);
+        setErrorMessage(haveErrorMessage);
+
+        if(haveErrorMessage) return;
+
+        const updatedFormData = {
+            id: 1,
+            email: email.current.value,
+        }
+
+        if(isSignUpForm){
+            updatedFormData["username"] = userName.current.value;
+        }
+
+        let apiURL;
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(updatedFormData),
+        }
+
+        if(isSignUpForm){
+            apiURL = "http://127.0.0.1:8000/register";
+        }
+        else{
+            apiURL = "http://127.0.0.1:8000/login";
+        }
+
+        try{
+            const response = await fetch(apiURL, options);
+            const data = await response.json();
+
+            
+            if(response.status === 200){
+                dispatch(addUser(data));
+                navigate("/bikeList");
+            }
+            else{
+                navigate("/login");
+            }
+            
+        }
+        catch(err){
+            console.log("error", updatedFormData);
+            // dispatch(addUser(updatedFormData));
+            // navigate("/bikeList");
+        }
+
     }
 
     return (
@@ -26,28 +100,39 @@ const Login = () => {
                 <h3 className='login-heading'>
                     {isSignUpForm ? 'Sign Up' : "Login"}
                 </h3>
+                {isSignUpForm && (
+                        <input
+                        className='login-input-fields email-field'
+                        type='text'
+                        placeholder='User Name'
+                        ref={userName}
+                    />
+                )}
                 <input
                     className='login-input-fields email-field'
-                    type='text'
-                    placeholder='User Name'
-                />
-                {isSignUpForm && <input
-                    className='login-input-fields email-field'
-                    type='text'
+                    type='email'
                     placeholder='Email Address'
-                />}
+                    ref={email}
+                />
                 <input
                     className='login-input-fields password-field'
                     type='password'
                     placeholder='Password'
+                    ref={password}
                 />
                 {isSignUpForm && (
                     <input
                         className='login-input-fields password-field'
                         type='password'
                         placeholder='Confirm Password'
+                        ref={confirmPassword}
                     />
                 )}
+
+                <p className="error-msg">
+                    {errorMessage}
+                </p>
+
                 <button
                     className='login-input-fields login-button'
                     onClick={handleAuthenticating}
