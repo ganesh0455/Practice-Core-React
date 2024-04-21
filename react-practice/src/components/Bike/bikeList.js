@@ -14,6 +14,9 @@ const BikeList = () => {
         const apiURL = "http://127.0.0.1:8000/bikes/";
         const options = {
             method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
         }
 
         try{

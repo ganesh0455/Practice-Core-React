@@ -70,6 +70,9 @@ const Login = () => {
         const options = {
             method: 'POST',
             body: JSON.stringify(updatedFormData),
+            headers: {
+                'Content-Type': 'application/json',
+            }
         }
 
         if (isSignUpForm) {
