@@ -321,8 +321,8 @@
 .options-div{
     position: absolute;
     margin-top: 40px;
-    width: 100px;
-    height: 60px;
+    width: 120px;
+    height: 90px;
     background-color: #2f3945;
     border-radius: 5px;
 }
@@ -393,4 +393,21 @@
 
 .search-btn{
     padding: 12px;
+}
+
+.enquiry-container{
+    display: flex;
+    flex-direction: column;
+    --tw-bg-opacity: 1;
+    background-color: #1d232a;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enquiry-card-container{
+    width: 500px;
+    height: 100px;
+    background-color: #2f3945;
 }

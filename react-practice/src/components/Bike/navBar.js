@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
@@ -6,13 +6,15 @@ const NavBar = () => {
     const [showProfile, setShowProfile] = useState(false);
     const navigate = useNavigate();
 
+    const userId = JSON.parse(localStorage.getItem('userId'));
+
     const loggedinUser = useSelector(state => state.user.userDetails)
 
-    const userName = localStorage.getItem('userName');
+    // const userName = localStorage.getItem('userName');
 
-    const profilePicLetter = userName[0];
+    // const profilePicLetter = userName[0];
 
-    // const profilePicLetter = loggedinUser.username[0].toUpperCase();
+    const profilePicLetter = loggedinUser.username[0].toUpperCase();
 
     console.log("logged in user",loggedinUser);
     console.log("Profile pic letter",profilePicLetter);
@@ -35,6 +37,10 @@ const NavBar = () => {
         navigate("/login");
     }
 
+    const handleEnquiries = () => {
+        navigate(`/enquirires/${userId}`)
+    }
+
     return (
         <div className='navbar bg-base-100'>
             <div className='logo-img' onClick={handleHome}>
@@ -49,6 +55,7 @@ const NavBar = () => {
                     {showProfile && (
                         <div className='options-div'>
                             <div className='view-profile' onClick={handleTeamDeatils}>View Team</div>
+                            <div className='view-profile' onClick={handleEnquiries}>Your enquiries</div>
                             <div className='view-profile' onClick={handleUserLogout}>Logout</div>
                         </div>
                     )}

@@ -35,9 +35,9 @@ const BikeList = () => {
     }
 
     useEffect(() => {
-        if(!userId){
-            navigate("/login");
-        }
+        // if(!userId){
+        //     navigate("/login");
+        // }
         fetchBikesList();
     }, [])
 

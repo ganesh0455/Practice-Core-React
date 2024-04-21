@@ -8,6 +8,7 @@ import BikeDetails from '../Bike/bikeDetails';
 import { useSelector } from 'react-redux';
 import Enquiry from '../Bike/enquiryModel';
 import TeamDetails from '../Bike/teamDetails';
+import EnquiriesList from '../Bike/enuiriesList';
 
 const Router = () => {
     const showModel = useSelector(state => state.model.showModel);
@@ -36,6 +37,10 @@ const Router = () => {
         {
             path:"/team/:id",
             element: <TeamDetails />,
+        },
+        {
+            path:"/enquirires/:id",
+            element: <EnquiriesList />,
         },
     ])
 
