@@ -47,7 +47,7 @@ const BikeDetails = () => {
     return (
         <div className='bike-details-container'>
             <NavBar />
-            <div className='bike-details'>
+            {bikeDetails && <div className='bike-details'>
                 {bikeDetails.bike_name && <h3 className='bike-name-heading'>{bikeDetails.bike_name}</h3>}
                 {/* <h3 className='bike-name-heading'>Bike name</h3> */}
                 <div className='bike-details-attributes'>
@@ -73,7 +73,7 @@ const BikeDetails = () => {
                     <img className='bike-detail-img' alt='bike-img-3' src={BIKE_IMAGE} /> */}
                 </div>
                 <button className='enquiry-btn' onClick={handleEnquiry}>Enquiry</button>
-            </div>
+            </div>}
             <ToastContainer />
         </div>
 
