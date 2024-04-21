@@ -33,7 +33,7 @@ const Enquiry = () => {
         try {
             const response = await fetch(apiURL, options);
 
-            if(response.status === 201){
+            if(response.status === 200){
                 toast("Successfully stored enquiry details");
             }
 
