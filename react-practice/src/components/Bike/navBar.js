@@ -8,7 +8,7 @@ const NavBar = () => {
 
     const loggedinUser = useSelector(state => state.user.userDetails)
 
-    const userName = JSON.parse(localStorage.getItem('userName'));
+    const userName = localStorage.getItem('userName');
 
     const profilePicLetter = userName[0];
 
