@@ -410,4 +410,10 @@
     width: 500px;
     height: 100px;
     background-color: #2f3945;
+    color: #a6adba;
+    padding: 0px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
 }

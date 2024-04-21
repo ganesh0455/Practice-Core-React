@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EnquiryCard from './enquiryCard';
+import { enquiries } from './utils';
+import NavBar from './navBar';
 
 const EnquiriesList = () => {
     const [enquiryList, setEnquiryList] = useState([]);
@@ -39,7 +41,9 @@ const EnquiriesList = () => {
 
     return (
         <div className='enquiry-container'>
+            <NavBar />
             {enquiryList.length > 0 && enquiryList.map((enquiry)=>{
+            // {enquiries.map((enquiry)=>{
                 return(
                     <EnquiryCard
                         description={enquiry.description}

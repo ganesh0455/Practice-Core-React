@@ -99,7 +99,7 @@ const Login = () => {
         catch (err) {
             dispatch(addUser(updatedFormData));
             toast("Oops! Cannot login or sign up please try again");
-            navigate("/bikeList");
+            // navigate("/bikeList");
         }
 
     }

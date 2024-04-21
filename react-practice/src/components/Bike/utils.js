@@ -11,6 +11,19 @@ export const bikes = [
     { id: 10, name: "StormChaser", model: "TempestX" },
 ];
 
+export const enquiries = [
+    { id: 1, description: "RapidFire", model: "SpeedMaster" },
+    { id: 2, description: "Thunderbolt", model: "PowerBlade" },
+    { id: 3, description: "ShadowRider", model: "StealthX" },
+    { id: 4, description: "BlazeEdge", model: "InfernoX" },
+    { id: 5, description: "SkyStriker", model: "AeroX" },
+    { id: 6, description: "NightHawk", model: "ShadowX" },
+    { id: 7, description: "GhostRider", model: "SpectreX" },
+    { id: 8, description: "SilverBullet", model: "SwiftX" },
+    { id: 9, description: "PhoenixFury", model: "FireBlade" },
+    { id: 10, description: "StormChaser", model: "TempestX" },
+];
+
 export const teams = [
     {
         id: 1,
