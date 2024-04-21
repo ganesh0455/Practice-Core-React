@@ -36,6 +36,7 @@ const Enquiry = () => {
             if(response.status === 200){
                 toast("Successfully stored enquiry details");
             }
+            dispatch(toggleModel())
 
         }
         catch (err) {
