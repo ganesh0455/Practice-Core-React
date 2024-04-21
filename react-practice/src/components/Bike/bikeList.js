@@ -29,7 +29,6 @@ const BikeList = () => {
 
     useEffect(() => {
         if(!userId){
-            localStorage.clear();
             navigate("/login");
         }
         fetchBikesList();

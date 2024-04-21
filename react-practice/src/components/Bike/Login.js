@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BIKE_IMAGE } from '../../constants';
 import { useNavigate } from "react-router-dom";
 import { validateData } from '../../utils/validate';
@@ -12,6 +12,15 @@ const Login = () => {
     const dispatch = useDispatch();
     const [isSignUpForm, setIsSignUpForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
+    const userId = JSON.parse(localStorage.getItem('userId'));
+
+    useEffect(() => {
+        if(userId){
+            if(!userId){
+                navigate("/bikeList");
+            }
+        }
+    }, [])
 
     const email = useRef(null);
     const password = useRef(null);
