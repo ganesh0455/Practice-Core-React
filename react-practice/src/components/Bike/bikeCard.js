@@ -5,7 +5,7 @@ const BikeCard = ({bike}) => {
     return (
         <Link className='bike-card-container' to={`/bikeDetails/${bike.id}`}>
             <img className='bike-card-image' src={BIKE_IMAGE} alt="bike-img" />
-            <h3 className='bike-card-heading'>{bike.bike_name}</h3>
+            <h3 className='bike-card-heading'>{bike.bike_image_1}</h3>
         </Link>
     )
 }
