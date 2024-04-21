@@ -49,7 +49,7 @@ const NavBar = () => {
             <div className='profile-container'>
                 <div className='profile-div'>
                     <div className='profile-pic-name'>
-                        <span className='user-name'>{loggedinUser.username}</span>
+                        <span className='user-name'>{userName}</span>
                         <div className='profile-letter' onClick={handleViewProfile}>{profilePicLetter}</div>
                     </div>
                     {showProfile && (
