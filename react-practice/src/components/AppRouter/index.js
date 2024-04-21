@@ -4,10 +4,10 @@ import Home from '../Bike';
 import Login from '../Bike/Login';
 import { RouterProvider } from "react-router-dom";
 import BikeList from '../Bike/bikeList';
-import UserDetails from '../Bike/userDetails';
 import BikeDetails from '../Bike/bikeDetails';
 import { useSelector } from 'react-redux';
 import Enquiry from '../Bike/enquiryModel';
+import TeamDetails from '../Bike/teamDetails';
 
 const Router = () => {
     const showModel = useSelector(state => state.model.showModel);
@@ -26,13 +26,17 @@ const Router = () => {
             element: <BikeList />,
         },
         {
-            path:"/user/:id",
-            element: <UserDetails />,
+            path:"/team",
+            element: <TeamDetails />,
         },
         {
             path:"/bikeDetails/:id",
             element: <BikeDetails />,
-        }
+        },
+        {
+            path:"/team/:id",
+            element: <TeamDetails />,
+        },
     ])
 
     return (

@@ -8,7 +8,7 @@ const NavBar = () => {
 
     const loggedinUser = useSelector(state => state.user.userDetails)
 
-    const profilePicLetter = loggedinUser.email[0].toUpperCase();
+    const profilePicLetter = loggedinUser.username[0].toUpperCase();
 
     console.log("logged in user",loggedinUser);
     console.log("Profile pic letter",profilePicLetter);
@@ -17,8 +17,8 @@ const NavBar = () => {
         setShowProfile(!showProfile);
     }
 
-    const handleUserDeatils = () => {
-        navigate(`/user/${loggedinUser.id}`);
+    const handleTeamDeatils = () => {
+        navigate(`/team`);
         // navigate(`/user/${loggedinUser.user_id}`);
     }
 
@@ -33,14 +33,17 @@ const NavBar = () => {
     return (
         <div className='navbar bg-base-100'>
             <div className='logo-img' onClick={handleHome}>
-                Bike Logo
+                Home
             </div>
             <div className='profile-container'>
                 <div className='profile-div'>
-                    <div className='profile-letter' onClick={handleViewProfile}>{profilePicLetter}</div>
+                    <div className='profile-pic-name'>
+                        <span className='user-name'>{loggedinUser.username}</span>
+                        <div className='profile-letter' onClick={handleViewProfile}>{profilePicLetter}</div>
+                    </div>
                     {showProfile && (
                         <div className='options-div'>
-                            <div className='view-profile' onClick={handleUserDeatils}>View Profile</div>
+                            <div className='view-profile' onClick={handleTeamDeatils}>View Team</div>
                             <div className='view-profile' onClick={handleUserLogout}>Logout</div>
                         </div>
                     )}

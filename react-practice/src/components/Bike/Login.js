@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { validateData } from '../../utils/validate';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../../utils/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -73,8 +75,9 @@ const Login = () => {
             const data = await response.json();
 
 
-            if (response.status === 200) {
+            if (response.status === 200 || response.status === 201) {
                 dispatch(addUser(data));
+                localStorage.setItem('userId', data.user_user_id);
                 navigate("/bikeList");
             }
             else {
@@ -83,9 +86,8 @@ const Login = () => {
 
         }
         catch (err) {
-            console.log("error", updatedFormData);
-            // dispatch(addUser(updatedFormData));
-            // navigate("/bikeList");
+            dispatch(addUser(updatedFormData));
+            toast("Oops! Cannot login or sign up please try again");
         }
 
     }
@@ -147,6 +149,7 @@ const Login = () => {
                     {!isSignUpForm ? "Don't have an account ? Signup" : "Have an account ? Login"}
                 </div>
             </form>
+            <ToastContainer />
         </div>
     )
 }
