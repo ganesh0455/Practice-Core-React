@@ -42,6 +42,7 @@ const BikeList = () => {
         <div className='bike-list-main-container'>
             <NavBar />
             <div className='bikelist-container'>
+                {/* {bikes.length > 0 && bikes.map((bike) => { */}
                 {bikeList.length > 0 && bikeList.map((bike) => {
                     return (
                         <BikeCard

@@ -89,17 +89,15 @@ const Login = () => {
 
             if (response.status === 200 || response.status === 201) {
                 dispatch(addUser(data));
-                localStorage.setItem('userId', data.user_user_id);
+                localStorage.setItem('userId', data.user_id);
                 navigate("/bikeList");
-            }
-            else {
-                navigate("/login");
             }
 
         }
         catch (err) {
             dispatch(addUser(updatedFormData));
             toast("Oops! Cannot login or sign up please try again");
+            // navigate("/bikeList");
         }
 
     }
