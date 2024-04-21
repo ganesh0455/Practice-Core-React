@@ -384,3 +384,13 @@
     width: 100px;
     padding: 10px;
 }
+
+.search-field{
+    padding: 12px;
+    width: 280px;
+    margin-left: 40%;
+}
+
+.search-btn{
+    padding: 12px;
+}

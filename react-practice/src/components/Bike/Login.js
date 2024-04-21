@@ -90,6 +90,7 @@ const Login = () => {
             if (response.status === 200 || response.status === 201) {
                 dispatch(addUser(data));
                 localStorage.setItem('userId', data.user_id);
+                localStorage.setItem('userName', data.username);
                 navigate("/bikeList");
                 toast("Successfully logged in");
             }

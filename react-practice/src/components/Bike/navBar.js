@@ -8,7 +8,11 @@ const NavBar = () => {
 
     const loggedinUser = useSelector(state => state.user.userDetails)
 
-    const profilePicLetter = loggedinUser.username[0].toUpperCase();
+    const userName = JSON.parse(localStorage.getItem('userName'));
+
+    const profilePicLetter = userName[0];
+
+    // const profilePicLetter = loggedinUser.username[0].toUpperCase();
 
     console.log("logged in user",loggedinUser);
     console.log("Profile pic letter",profilePicLetter);

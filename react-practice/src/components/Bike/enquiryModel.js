@@ -79,8 +79,8 @@ const Enquiry = () => {
                         Submit
                     </button>
                 </div>
+                <ToastContainer />
             </form>
-            <ToastContainer />
         </Modal>
     )
 }
