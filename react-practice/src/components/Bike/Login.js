@@ -94,6 +94,9 @@ const Login = () => {
                 navigate("/bikeList");
                 toast("Successfully logged in");
             }
+            else if(response.status === 400) {
+                toast("Entered details were already exist please try with deifferent names and email");
+            }
 
         }
         catch (err) {
