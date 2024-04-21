@@ -10,14 +10,14 @@ const NavBar = () => {
 
     const loggedinUser = useSelector(state => state.user.userDetails)
 
-    // const userName = localStorage.getItem('userName');
+    const userName = localStorage.getItem('userName');
 
-    // const profilePicLetter = userName[0];
+    const profilePicLetter = userName[0];
 
-    const profilePicLetter = loggedinUser.username[0].toUpperCase();
+    // const profilePicLetter = loggedinUser.username[0].toUpperCase();
 
-    console.log("logged in user",loggedinUser);
-    console.log("Profile pic letter",profilePicLetter);
+    // console.log("logged in user",loggedinUser);
+    // console.log("Profile pic letter",profilePicLetter);
 
     const handleViewProfile = () => {
         setShowProfile(!showProfile);
