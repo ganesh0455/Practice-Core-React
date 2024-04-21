@@ -16,9 +16,7 @@ const Login = () => {
 
     useEffect(() => {
         if(userId){
-            if(!userId){
-                navigate("/bikeList");
-            }
+            navigate("/bikeList");
         }
     }, [])
 
