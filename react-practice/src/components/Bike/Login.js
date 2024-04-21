@@ -11,7 +11,7 @@ const Login = () => {
     const [isSignUpForm, setIsSignUpForm] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const email =  useRef(null);
+    const email = useRef(null);
     const password = useRef(null);
     const confirmPassword = useRef(null);
     const userName = useRef(null);
@@ -22,17 +22,17 @@ const Login = () => {
         setErrorMessage(null);
     }
 
-    const handleAuthenticating = async(event) => {
+    const handleAuthenticating = async (event) => {
         event.preventDefault();
 
         const formUserDetails = {
             isSignUpForm: isSignUpForm,
-            email: email.current.value,
+            userName: userName.current.value,
             password: password.current.value,
         }
 
-        if(isSignUpForm){
-            formUserDetails["userName"] = userName.current.value;
+        if (isSignUpForm) {
+            formUserDetails["email"] = email.current.value;
             formUserDetails["confirmPassword"] = confirmPassword.current.value;
         }
 
@@ -43,45 +43,46 @@ const Login = () => {
         console.log("errorMessage", haveErrorMessage);
         setErrorMessage(haveErrorMessage);
 
-        if(haveErrorMessage) return;
+        if (haveErrorMessage) return;
 
         const updatedFormData = {
-            id: 1,
-            email: email.current.value,
+            username: formUserDetails.userName,
+            password: formUserDetails.password 
         }
 
-        if(isSignUpForm){
-            updatedFormData["username"] = userName.current.value;
+        if (isSignUpForm) {
+            updatedFormData["email"] = email.current.value;
+            updatedFormData["password2"] = confirmPassword.current.value;
         }
-
+        
         let apiURL;
         const options = {
             method: 'POST',
             body: JSON.stringify(updatedFormData),
         }
 
-        if(isSignUpForm){
-            apiURL = "http://127.0.0.1:8000/register";
+        if (isSignUpForm) {
+            apiURL = "http://127.0.0.1:8000/register/";
         }
-        else{
-            apiURL = "http://127.0.0.1:8000/login";
+        else {
+            apiURL = "http://127.0.0.1:8000/login/";
         }
 
-        try{
+        try {
             const response = await fetch(apiURL, options);
             const data = await response.json();
 
-            
-            if(response.status === 200){
+
+            if (response.status === 200) {
                 dispatch(addUser(data));
                 navigate("/bikeList");
             }
-            else{
+            else {
                 navigate("/login");
             }
-            
+
         }
-        catch(err){
+        catch (err) {
             console.log("error", updatedFormData);
             // dispatch(addUser(updatedFormData));
             // navigate("/bikeList");
@@ -100,20 +101,21 @@ const Login = () => {
                 <h3 className='login-heading'>
                     {isSignUpForm ? 'Sign Up' : "Login"}
                 </h3>
-                {isSignUpForm && (
-                        <input
-                        className='login-input-fields email-field'
-                        type='text'
-                        placeholder='User Name'
-                        ref={userName}
-                    />
-                )}
+
                 <input
                     className='login-input-fields email-field'
-                    type='email'
-                    placeholder='Email Address'
-                    ref={email}
+                    type='text'
+                    placeholder='User Name'
+                    ref={userName}
                 />
+                {isSignUpForm && (
+                    <input
+                        className='login-input-fields email-field'
+                        type='email'
+                        placeholder='Email Address'
+                        ref={email}
+                    />
+                )}
                 <input
                     className='login-input-fields password-field'
                     type='password'

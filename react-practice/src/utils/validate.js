@@ -16,10 +16,10 @@ export const validateData = (email, password, ...rest) => {
 
     console.log(isConfirmPasswordValid);
 
-    if(!isEmailValid) return "Please enter a valid email address.";
+    if(rest[0].isSignUpForm && !isEmailValid) return "Please enter a valid email address.";
     if(!isPasswordValid) return "Please enter a valid password.";
     if(rest[0].isSignUpForm && !isConfirmPasswordValid) return "Password and Confirm password should be same.";
-    if(rest[0].isSignUpForm && !rest[0].userName) return "Please enter Username.";
+    if(!rest[0].userName) return "Please enter Username.";
 
     return null; // if email and password is valid then we are returning null.
 }
