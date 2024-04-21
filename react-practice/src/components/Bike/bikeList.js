@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const BikeList = () => {
     const navigate = useNavigate();
-    const [bikeList, setBikeList] = useState();
+    const [bikeList, setBikeList] = useState([]);
     const userId = JSON.parse(localStorage.getItem('userId'));
     const fetchBikesList = async() => {
         const apiURL = "http://127.0.0.1:8000/bikes/";
@@ -39,7 +39,7 @@ const BikeList = () => {
         <div className='bike-list-main-container'>
             <NavBar />
             <div className='bikelist-container'>
-            {bikeList.map((bike) => {
+                {bikeList.length > 0 && bikeList.map((bike) => {
                     return (
                         <BikeCard
                             key={bike.id}
