@@ -7,7 +7,7 @@ import NavBar from './navBar';
 
 const TeamDetails = () => {
   const { id } = useParams();
-  const [teamDetails, setTeamDetails] = useState();
+  const [teamDetails, setTeamDetails] = useState([]);
 
   const fetchUserDetails = async () => {
     const apiURL = `http://127.0.0.1:8000/team/`;
@@ -37,7 +37,7 @@ const TeamDetails = () => {
       <NavBar />
       <div className='user-details-container'>
         {/* {teams.map(team => { */}
-        {teamDetails.map(team => {
+        {teamDetails.length > 0 && teamDetails.map(team => {
           return (
             <TeamCard
               key={team.id}
