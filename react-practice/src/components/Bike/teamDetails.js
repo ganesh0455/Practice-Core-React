@@ -10,7 +10,7 @@ const TeamDetails = () => {
   const [teamDetails, setTeamDetails] = useState();
 
   const fetchUserDetails = async () => {
-    const apiURL = `http://127.0.0.1:8000/team/${id}`;
+    const apiURL = `http://127.0.0.1:8000/team/`;
     const options = {
       method: 'GET',
     }
@@ -36,7 +36,8 @@ const TeamDetails = () => {
     <div className='team-container'>
       <NavBar />
       <div className='user-details-container'>
-        {teams.map(team => {
+        {/* {teams.map(team => { */}
+        {teamDetails.map(team => {
           return (
             <TeamCard
               key={team.id}
